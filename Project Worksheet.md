@@ -42,7 +42,7 @@ Make set lists, link to lyrics carousel to swipe through list in order, save fav
 ---
 
 ## User Stories
-[Stories](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817949/User%20Stories.heic)
+[Stories](https://docs.google.com/document/d/1OJWs8QhFzk_uGn3Vu4C10nTMwXayecXjTeU16lsbWoU/edit?usp=sharing)
 
 ---
 ## MVP Time-Frame
