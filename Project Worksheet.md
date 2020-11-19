@@ -3,7 +3,7 @@
 
 ## Project Links
 
-- [GitHub: Back-End](url)
+- [GitHub: Back-End](https://github.com/tonim99/lyrics-backend)
 - [GitHub: Front-End](url)
 - [Back-End Deployed](url)
 - [Front-End Deployed](url)
@@ -24,7 +24,7 @@
 ---
 
 ## Project Description
-Make set lists, link to lyrics carousel to swipe through list in order. 
+Make set lists, link to lyrics carousel to swipe through list in order, save favorites. 
  
 
 ---
@@ -41,6 +41,10 @@ Make set lists, link to lyrics carousel to swipe through list in order.
 - [List](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817950/List%20View.heic)
 ---
 
+## User Stories
+[Stories](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817949/User%20Stories.heic)
+
+---
 ## MVP Time-Frame
 
 | Component                      | Priority | Estimated Time | Actual Time |
