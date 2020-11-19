@@ -39,6 +39,7 @@ Make set lists, link to lyrics carousel to swipe through list in order, save fav
 ## Wireframes 
 - [Home](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817950/Home.heic)
 - [List](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817950/List%20View.heic)
+- [Figma](https://www.figma.com/file/6uObwlS9MAVxFB3QpaW6l7/Untitled?node-id=0%3A1)
 ---
 
 ## User Stories
