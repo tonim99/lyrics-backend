@@ -54,7 +54,7 @@ callback (
 
 | Component                      | Priority | Estimated Time | Actual Time |
 | :----------------------------- | :------- | :------------- | :---------- |
-| User Authentication | L | 2 hrs |  |
+| User Authentication | L | 2 hrs | 1 hr |
 | Server/API call | H | 3 hrs |  |
 | Models | H | 1 hr |   |
 | Back-end Routes | H | 3 hrs |  |
