@@ -15,3 +15,7 @@ Migrating to CreateUsers (20201120015738)
   [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(1537246212716069940)[0m
   [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (10.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "tonim"], ["password_digest", "$2a$12$GGW5UDNYxe0Zz8dAVwnsr.QB/gIa1EaU6QNzYk11RWVWS1nP7Ki5W"], ["age", 39], ["created_at", "2020-11-20 02:02:32.787470"], ["updated_at", "2020-11-20 02:02:32.787470"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
