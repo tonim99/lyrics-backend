@@ -19,3 +19,124 @@ Migrating to CreateUsers (20201120015738)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[36mUser Create (10.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "tonim"], ["password_digest", "$2a$12$GGW5UDNYxe0Zz8dAVwnsr.QB/gIa1EaU6QNzYk11RWVWS1nP7Ki5W"], ["age", 39], ["created_at", "2020-11-20 02:02:32.787470"], ["updated_at", "2020-11-20 02:02:32.787470"]]
   [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2020-11-19 21:22:10 -0500
+Started GET "/" for ::1 at 2020-11-19 21:22:32 -0500
+Started GET "/" for ::1 at 2020-11-19 21:22:32 -0500
+Started GET "/" for ::1 at 2020-11-19 21:22:32 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 23.3ms | Allocations: 487)
+Completed 200 OK in 40ms (Views: 30.9ms | ActiveRecord: 0.0ms | Allocations: 2923)
+
+
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 23.1ms | Allocations: 495)
+Completed 200 OK in 42ms (Views: 30.9ms | ActiveRecord: 0.0ms | Allocations: 2867)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-11-19 21:22:32 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/login" for ::1 at 2020-11-19 21:22:56 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-11-19 21:24:00 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 18.0ms | Allocations: 191)
+Completed 200 OK in 39ms (Views: 20.0ms | ActiveRecord: 0.0ms | Allocations: 737)
+
+
+Started POST "/login" for ::1 at 2020-11-19 21:26:26 -0500
+  
+SyntaxError (/Users/toni/Projects/Capstone/lyrics_api/app/controllers/users_controller.rb:39: syntax error, unexpected end, expecting end-of-input):
+  
+app/controllers/users_controller.rb:39: syntax error, unexpected end, expecting end-of-input
+app/controllers/users_controller.rb:39: syntax error, unexpected end, expecting end-of-input
+Started POST "/login" for ::1 at 2020-11-19 21:27:38 -0500
+Started POST "/login" for ::1 at 2020-11-19 21:30:56 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/toni/Projects/Capstone/lyrics_api/app/controllers/users_controller.rb:39: syntax error, unexpected end, expecting end-of-input):
+  
+app/controllers/users_controller.rb:39: syntax error, unexpected end, expecting end-of-input
+app/controllers/users_controller.rb:39: syntax error, unexpected end, expecting end-of-input
+Started POST "/login" for ::1 at 2020-11-19 21:31:40 -0500
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"tonim", "password"=>"[FILTERED]", "user"=>{"username"=>"tonim"}}
+  [1m[36mUser Load (8.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tonim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 200 OK in 317ms (Views: 0.2ms | ActiveRecord: 29.8ms | Allocations: 5132)
+
+
+Started POST "/login" for ::1 at 2020-11-19 21:32:08 -0500
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"tonim", "password"=>"[FILTERED]", "user"=>{"username"=>"tonim"}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tonim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 500 Internal Server Error in 353ms (ActiveRecord: 1.9ms | Allocations: 36474)
+
+
+  
+NoMethodError (undefined method `encode_token' for #<UsersController:0x00007ff7fe7a4fb0>):
+  
+app/controllers/users_controller.rb:20:in `login'
+Started POST "/login" for ::1 at 2020-11-19 21:34:57 -0500
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"tonim", "password"=>"[FILTERED]", "user"=>{"username"=>"tonim"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tonim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 200 OK in 282ms (Views: 0.5ms | ActiveRecord: 17.6ms | Allocations: 4662)
+
+
