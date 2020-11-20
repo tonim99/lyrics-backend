@@ -14,7 +14,7 @@
 
 | Day   | Deliverable                                          | Status |
 | :---- | :--------------------------------------------------- | :----- |
-| Day 1 | Approval                                             | []     |
+| Day 1 | Approval                                             | [X]     |
 | Day 2 | Back-End + React Structure  deployed                 | []     |
 | Day 3 | Front-End built w/basic functionality                | []     |
 | Day 4 | Functionality & Style nailed down                    | []     |
@@ -41,8 +41,8 @@ callback (
 ```
 
 ## Wireframes 
-- [Home](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817950/Home.heic)
-- [List](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817950/List%20View.heic)
+- ![Home](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817950/Home.heic)
+- ![List](https://res.cloudinary.com/dir27p6mf/image/upload/v1605817950/List%20View.heic)
 - [Figma](https://www.figma.com/file/6uObwlS9MAVxFB3QpaW6l7/Untitled?node-id=0%3A1)
 ---
 
