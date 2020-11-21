@@ -4,7 +4,7 @@
 ## Project Links
 
 - [GitHub: Back-End](https://github.com/tonim99/lyrics-backend)
-- [GitHub: Front-End](url)
+- [GitHub: Front-End](https://github.com/tonim99/LyricsApp)
 - [Back-End Deployed](url)
 - [Front-End Deployed](url)
 
@@ -156,5 +156,5 @@ Use this section to include a brief code snippet of functionality that you are p
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTQxMTI3MzNdfQ==
+eyJoaXN0b3J5IjpbLTU0NjE5NzM3OSwtMTQxNDExMjczM119
 -->
