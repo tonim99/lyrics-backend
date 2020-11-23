@@ -981,3 +981,167 @@ Filter chain halted as :authorized rendered or redirected
 Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 135)
 
 
+Started POST "/login" for ::1 at 2020-11-23 11:30:17 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"tonim", "password"=>"[FILTERED]", "user"=>{"username"=>"tonim"}}
+  [1m[36mUser Load (28.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tonim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 200 OK in 343ms (Views: 0.4ms | ActiveRecord: 74.3ms | Allocations: 6640)
+
+
+Started GET "/auto_login" for ::1 at 2020-11-23 11:30:37 -0500
+Processing by UsersController#auto_login as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1131)
+
+
+Started GET "/songs" for ::1 at 2020-11-23 11:31:32 -0500
+Processing by SongsController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 143)
+
+
+Started GET "/songs" for ::1 at 2020-11-23 11:31:48 -0500
+Processing by SongsController#index as */*
+  [1m[36mUser Load (15.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+  [1m[36mSong Load (5.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:8:in `index'
+Completed 200 OK in 60ms (Views: 7.0ms | ActiveRecord: 33.7ms | Allocations: 7558)
+
+
+Started GET "/setlists" for ::1 at 2020-11-23 11:32:14 -0500
+Processing by SetlistsController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 140)
+
+
+Started GET "/setlists" for ::1 at 2020-11-23 11:32:24 -0500
+Processing by SetlistsController#index as */*
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 7.6ms | Allocations: 2605)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column setlists.user_id does not exist
+LINE 1: SELECT "setlists".* FROM "setlists" WHERE "setlists"."user_i...
+                                                  ^
+):
+  
+app/controllers/setlists_controller.rb:9:in `index'
+Started GET "/setlists" for ::1 at 2020-11-23 11:35:20 -0500
+Processing by SetlistsController#index as */*
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.9ms | Allocations: 1069)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column setlists.user_id does not exist
+LINE 1: SELECT "setlists".* FROM "setlists" WHERE "setlists"."user_i...
+                                                  ^
+):
+  
+app/controllers/setlists_controller.rb:9:in `index'
+Started GET "/" for ::1 at 2020-11-23 11:35:43 -0500
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.9ms | Allocations: 316)
+Completed 200 OK in 31ms (Views: 23.9ms | ActiveRecord: 0.0ms | Allocations: 1631)
+
+
+Started GET "/users" for ::1 at 2020-11-23 11:35:48 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/setlists" for ::1 at 2020-11-23 11:36:09 -0500
+Processing by SetlistsController#create as */*
+  Parameters: {"name"=>"Set List 1", "user_id"=>1, "setlist"=>{"name"=>"Set List 1"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 3.1ms | Allocations: 3691)
+
+
+  
+NoMethodError (undefined method `user_id=' for nil:NilClass):
+  
+app/controllers/setlists_controller.rb:20:in `create'
+Started POST "/songs" for ::1 at 2020-11-23 11:45:19 -0500
+Processing by SongsController#create as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/songs" for ::1 at 2020-11-23 11:45:30 -0500
+Processing by SongsController#create as */*
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 400 Bad Request in 10ms (ActiveRecord: 2.4ms | Allocations: 1004)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: song):
+  
+app/controllers/songs_controller.rb:49:in `song_params'
+app/controllers/songs_controller.rb:18:in `create'
+Started POST "/songs" for ::1 at 2020-11-23 11:45:41 -0500
+Processing by SongsController#create as */*
+  Parameters: {"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race", "song"=>{"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race"}}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+  [1m[35m (19.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/songs_controller.rb:20:in `create'
+  [1m[36mSong Create (50.5ms)[0m  [1m[32mINSERT INTO "songs" ("name", "artist", "lyrics", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Kashmir"], ["artist", "Led Zeppelin"], ["lyrics", "Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race"], ["created_at", "2020-11-23 16:45:41.898997"], ["updated_at", "2020-11-23 16:45:41.898997"]]
+  ↳ app/controllers/songs_controller.rb:20:in `create'
+  [1m[35m (12.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/songs_controller.rb:20:in `create'
+Completed 201 Created in 94ms (Views: 0.7ms | ActiveRecord: 86.2ms | Allocations: 3743)
+
+
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1537246212716069940)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFaveColumnToSong (20201123164651)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (108.4ms)[0m  [1m[35mALTER TABLE "songs" ADD "is_fav" boolean DEFAULT FALSE[0m
+  [1m[36mprimary::SchemaMigration Create (10.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201123164651"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1537246212716069940)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/songs" for ::1 at 2020-11-23 11:51:30 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongsController#index as */*
+  Parameters: {"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race", "song"=>{"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+  [1m[36mSong Load (0.7ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:8:in `index'
+Completed 200 OK in 29ms (Views: 9.1ms | ActiveRecord: 2.2ms | Allocations: 11237)
+
+
