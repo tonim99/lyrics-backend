@@ -1145,3 +1145,421 @@ Processing by SongsController#index as */*
 Completed 200 OK in 29ms (Views: 9.1ms | ActiveRecord: 2.2ms | Allocations: 11237)
 
 
+Started GET "/songs" for ::1 at 2020-11-23 17:04:49 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+LoadError (cannot load such file -- Faraday):
+  
+app/controllers/songs_controller.rb:1:in `<main>'
+Started GET "/favicon.ico" for ::1 at 2020-11-23 17:04:51 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs" for ::1 at 2020-11-23 17:05:21 -0500
+  
+LoadError (cannot load such file -- faraday):
+  
+app/controllers/songs_controller.rb:1:in `<main>'
+Started GET "/songs" for ::1 at 2020-11-23 17:05:50 -0500
+Processing by SongsController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 183)
+
+
+Started GET "/songs/" for ::1 at 2020-11-23 17:06:54 -0500
+Processing by SongsController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/songs/" for ::1 at 2020-11-23 17:07:06 -0500
+Processing by SongsController#index as */*
+  [1m[36mUser Load (9.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+  [1m[36mSong Load (1.6ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+Completed 200 OK in 307ms (Views: 23.0ms | ActiveRecord: 243.1ms | Allocations: 16334)
+
+
+Started GET "/songs/search/artist/the" for ::1 at 2020-11-23 17:08:04 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"the"}
+  [1m[36mUser Load (31.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 31.1ms | Allocations: 2366)
+
+
+  
+NameError (uninitialized constant SongsController::Faraday):
+  
+app/controllers/songs_controller.rb:43:in `search_by_artist'
+Started GET "/songs/search/artist/the" for ::1 at 2020-11-23 17:11:57 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"the"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 200 OK in 307ms (Views: 0.3ms | ActiveRecord: 22.8ms | Allocations: 22912)
+
+
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:15:25 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 17.6ms | Allocations: 6885)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): "https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=\#{params[:search]}&apikey=792639a1e7452995b321f5f86c174c53"):
+  
+app/controllers/songs_controller.rb:43:in `search_by_artist'
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:15:58 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.7ms | Allocations: 925)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): "https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=\#{params[:search]}&apikey=792639a1e7452995b321f5f86c174c53"):
+  
+app/controllers/songs_controller.rb:43:in `search_by_artist'
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:16:32 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 200 OK in 279ms (Views: 0.3ms | ActiveRecord: 74.3ms | Allocations: 9502)
+
+
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:23:28 -0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 11.6ms | Allocations: 7729)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/songs_controller.rb:43:in `[]'
+app/controllers/songs_controller.rb:43:in `search_by_artist'
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:23:52 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `logged_in_user'
+Completed 200 OK in 267ms (Views: 0.2ms | ActiveRecord: 25.2ms | Allocations: 14693)
+
+
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:25:01 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 147)
+
+
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:28:06 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+Completed 200 OK in 171ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2826)
+
+
+Started GET "/songs/search/lyrics/Gold%20Dust" for ::1 at 2020-11-23 18:06:01 -0500
+  
+SyntaxError (/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:55: syntax error, unexpected tLABEL, expecting do or '{' or '('
+    render json: res.body
+           ^~~~~
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:56: syntax error, unexpected end, expecting tSTRING_DEND
+  end
+  ^~~
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:69: syntax error, unexpected end, expecting tSTRING_DEND):
+  
+app/controllers/songs_controller.rb:55: syntax error, unexpected tLABEL, expecting do or '{' or '('
+app/controllers/songs_controller.rb:56: syntax error, unexpected end, expecting tSTRING_DEND
+app/controllers/songs_controller.rb:69: syntax error, unexpected end, expecting tSTRING_DEND
+app/controllers/songs_controller.rb:55: syntax error, unexpected tLABEL, expecting do or '{' or '('
+app/controllers/songs_controller.rb:56: syntax error, unexpected end, expecting tSTRING_DEND
+app/controllers/songs_controller.rb:69: syntax error, unexpected end, expecting tSTRING_DEND
+Started GET "/songs/search/lyrics/Gold%20Dust" for ::1 at 2020-11-23 18:07:43 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold Dust"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 155)
+
+
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 18:08:08 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+Completed 200 OK in 177ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2783)
+
+
+Started GET "/songs/search/lyrics/Gold%20Dust" for ::1 at 2020-11-23 18:08:37 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold Dust"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started GET "/songs/search/lyrics/Gol" for ::1 at 2020-11-23 18:08:41 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gol"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started GET "/songs/search/lyrics/Gol" for ::1 at 2020-11-23 18:09:24 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gol"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started POST "/songs/search" for ::1 at 2020-11-23 18:10:02 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/songs/search"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/songs/search/lyrics/" for ::1 at 2020-11-23 18:10:13 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/songs/search/lyrics"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs/search/lyrics/" for ::1 at 2020-11-23 18:10:19 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/songs/search/lyrics"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs/search/lyrics/any" for ::1 at 2020-11-23 18:10:29 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race", "search"=>"any", "song"=>{"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+Completed 200 OK in 196ms (Views: 0.1ms | ActiveRecord: 44.0ms | Allocations: 9453)
+
+
+Started GET "/songs/search/lyrics/artist" for ::1 at 2020-11-23 18:10:51 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race", "search"=>"artist", "song"=>{"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race"}}
+  [1m[36mUser Load (19.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+Completed 200 OK in 126ms (Views: 0.2ms | ActiveRecord: 19.6ms | Allocations: 3583)
+
+
+Started GET "/songs/search/lyrics/artist" for ::1 at 2020-11-23 18:11:17 -0500
+Processing by SongsController#search_lyrics as HTML
+  Parameters: {"search"=>"artist"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started GET "/songs/search/artist&track" for ::1 at 2020-11-23 18:12:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/songs/search/artist&track"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs/search/artist" for ::1 at 2020-11-23 18:12:36 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/songs/search/artist"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs/search/any" for ::1 at 2020-11-23 18:12:41 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/songs/search/any"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs/search/lyrics/artis" for ::1 at 2020-11-23 18:12:49 -0500
+Processing by SongsController#search_lyrics as HTML
+  Parameters: {"search"=>"artis"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 119)
+
+
+Started GET "/songs/search/lyrics/artist" for ::1 at 2020-11-23 18:13:48 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race", "search"=>"artist", "song"=>{"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race"}}
+  [1m[36mUser Load (7.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+Completed 200 OK in 191ms (Views: 0.1ms | ActiveRecord: 19.7ms | Allocations: 9404)
+
+
+Started GET "/songs/search/lyrics/artist" for ::1 at 2020-11-23 18:14:03 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race", "search"=>"artist", "song"=>{"name"=>"Kashmir", "artist"=>"Led Zeppelin", "lyrics"=>"Oh, let the sun beat down upon my face And stars fill my dream I'm a traveler of both time and space To be where I have been To sit with elders of the gentle race"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started GET "/songs/search/lyrics/Gol" for ::1 at 2020-11-23 18:14:58 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gol"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started GET "/songs/search/lyrics/Gol" for ::1 at 2020-11-23 18:16:45 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gol"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 155)
+
+

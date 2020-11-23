@@ -1,6 +1,8 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :update, :destroy]
 
+  before_action :authorized, except: [:search_by_artist]
+
   # GET /songs
   def index
     @songs = Song.all
@@ -37,6 +39,22 @@ class SongsController < ApplicationController
   def destroy
     @song.destroy
   end
+
+  def search_by_artist
+    res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=#{params[:search]}&apikey=#{ENV['apikey']}") 
+    render json: res.body
+  end
+
+  def search_by_track
+    res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=#{params[:search]}&apikey=#{ENV['apikey']}") 
+    render json: res.body
+  end
+
+  # def search_lyrics
+  #   res = Faraday.get("https://api.musixmatch.com/ws/1.1/lyrics.get?format=jsonp&callback=callback&q_track=#{params[:search]}q_artist=fleetwood%20mac&apikey=#{ENV['apikey']}") 
+  #   render json: res.body
+  # end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

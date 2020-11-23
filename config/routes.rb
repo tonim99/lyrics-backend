@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   resource :users, only: [:create]
   post "/login", to: "users#login"
   get "/auto_login", to: "users#auto_login"
+  get "songs/search/artist/:search", to: "songs#search_by_artist"
+
+  get"songs/search/track/:search", to: "songs#search_by_track"
+  
+  get"songs/search/lyrics/:search", to: "songs#search_lyrics"
 end
