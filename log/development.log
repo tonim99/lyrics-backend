@@ -1234,7 +1234,7 @@ Completed 500 Internal Server Error in 48ms (ActiveRecord: 17.6ms | Allocations:
 
 
   
-URI::InvalidURIError (bad URI(is not URI?): "https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=\#{params[:search]}&apikey=792639a1e7452995b321f5f86c174c53"):
+URI::InvalidURIError (bad URI(is not URI?): "https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=\#{params[:search]}&apikey=#{'apikey'}"):
   
 app/controllers/songs_controller.rb:43:in `search_by_artist'
 Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:15:58 -0500
@@ -1246,7 +1246,7 @@ Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.7ms | Allocations: 9
 
 
   
-URI::InvalidURIError (bad URI(is not URI?): "https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=\#{params[:search]}&apikey=792639a1e7452995b321f5f86c174c53"):
+URI::InvalidURIError (bad URI(is not URI?): "https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=\#{params[:search]}&apikey=#{'apikey'}"):
   
 app/controllers/songs_controller.rb:43:in `search_by_artist'
 Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 17:16:32 -0500
@@ -1563,3 +1563,160 @@ Filter chain halted as :authorized rendered or redirected
 Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 155)
 
 
+Started GET "/songs/search/lyrics/Gol" for ::1 at 2020-11-23 18:20:29 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gol"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 196)
+
+
+Started GET "/songs/search/lyrics/Gold" for ::1 at 2020-11-23 18:20:49 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started GET "/songs/search/lyrics/Gold" for ::1 at 2020-11-23 18:26:44 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 154)
+
+
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 18:27:12 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+Completed 200 OK in 487ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 7947)
+
+
+Started GET "/songs/search/lyrics/Gold" for ::1 at 2020-11-23 18:29:43 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold"}
+Completed 200 OK in 147ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2844)
+
+
+Started GET "/songs/search/lyrics/Gold" for ::1 at 2020-11-23 18:30:54 -0500
+  
+SyntaxError (/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:65: syntax error, unexpected tIDENTIFIER, expecting ')'
+...llow a trusted parameter "white list" through.
+...                          ^~~~~
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:69: unterminated string meets end of file
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:69: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/songs_controller.rb:65: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/songs_controller.rb:69: unterminated string meets end of file
+app/controllers/songs_controller.rb:69: syntax error, unexpected end-of-input, expecting end
+app/controllers/songs_controller.rb:65: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/songs_controller.rb:69: unterminated string meets end of file
+app/controllers/songs_controller.rb:69: syntax error, unexpected end-of-input, expecting end
+Started GET "/songs/search/lyrics/Gold" for ::1 at 2020-11-23 18:31:22 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold"}
+Completed 200 OK in 462ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2847)
+
+
+Started GET "/songs/search/lyrics/Gold/Fleetwood" for ::1 at 2020-11-23 18:31:54 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Fleetwood"}
+Completed 200 OK in 371ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2849)
+
+
+Started GET "/songs/search/lyrics/Gold/" for ::1 at 2020-11-23 18:32:17 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold"}
+Completed 200 OK in 123ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2847)
+
+
+Started GET "/songs/search/lyrics/Gold" for ::1 at 2020-11-23 18:40:24 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"Gold"}
+Completed 200 OK in 166ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2788)
+
+
+Started GET "/songs/search/lyrics/a" for ::1 at 2020-11-23 18:41:53 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"a"}
+Completed 200 OK in 329ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2786)
+
+
+Started GET "/songs/search/lyrics/dreams" for ::1 at 2020-11-23 18:42:13 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"dreams"}
+Completed 200 OK in 205ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2786)
+
+
+Started GET "/songs/search/lyrics/d" for ::1 at 2020-11-23 18:42:19 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"d"}
+Completed 200 OK in 196ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2788)
+
+
+Started GET "/songs/search/lyrics/a" for ::1 at 2020-11-23 18:42:24 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"a"}
+Completed 200 OK in 105ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2795)
+
+
+Started GET "/songs/search/lyrics/abba" for ::1 at 2020-11-23 18:42:48 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"abba"}
+Completed 200 OK in 188ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2789)
+
+
+Started GET "/songs/search/lyrics/sos" for ::1 at 2020-11-23 18:42:57 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"sos"}
+Completed 200 OK in 188ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2787)
+
+
+Started GET "/songs/search/lyrics/s" for ::1 at 2020-11-23 18:43:03 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"s"}
+Completed 200 OK in 252ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2788)
+
+
+Started GET "/songs/search/lyrics/hello/adele" for ::1 at 2020-11-23 18:51:14 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"hello", "search2"=>"adele"}
+Completed 200 OK in 227ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2849)
+
+
+Started GET "/songs/search/lyrics/hello" for ::1 at 2020-11-23 18:52:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/songs/search/lyrics/hello"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs/search/artist/heart" for ::1 at 2020-11-23 18:52:57 -0500
+Processing by SongsController#search_by_artist as */*
+  Parameters: {"search"=>"heart"}
+Completed 200 OK in 167ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2763)
+
+
+Started GET "/songs/search/track/barracuda" for ::1 at 2020-11-23 18:53:45 -0500
+Processing by SongsController#search_by_track as */*
+  Parameters: {"search"=>"barracuda"}
+Completed 200 OK in 162ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2754)
