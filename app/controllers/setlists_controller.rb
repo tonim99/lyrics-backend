@@ -17,7 +17,7 @@ class SetlistsController < ApplicationController
   # POST /setlists
   def create
     @setlist = Setlist.new(setlist_params)
-    @note.user_id = @user.id
+    @setlist.user_id = @user.id
 
     if @setlist.save
       render json: @setlist, status: :created, location: @setlist

@@ -1,4 +1,4 @@
 class Setlist < ApplicationRecord
-  has_many :users
+  belongs_to :user
   has_many :songs, through: :users
 end
