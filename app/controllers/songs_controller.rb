@@ -1,8 +1,8 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:show, :update, :destroy]
+  # before_action :set_song, only: [:show, :update, :destroy]
 
-  before_action :authorized, except: [:search_by_artist, :search_by_track, :search_by_lyrics, :search_lyrics, :search_track_id]
-  
+  before_action :set_song, only: [:show, :update, :destroy], except: [:search_by_artist, :search_by_track, :search_by_lyrics, :search_lyrics, :search_track_id]
+  # :authorized,
   # GET /songs
   def index
     @songs = Song.all
