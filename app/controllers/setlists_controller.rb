@@ -6,12 +6,12 @@ class SetlistsController < ApplicationController
   def index
     @setlists = Setlist.where(user_id: @user.id)
 
-    render json: @setlists
+    render json: @setlists.to_json(include: :songs)
   end
 
   # GET /setlists/1
   def show
-    render json: @setlist
+    render json: @setlist.to_json(include: :songs)
   end
 
   # POST /setlists

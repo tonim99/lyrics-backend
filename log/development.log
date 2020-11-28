@@ -2252,3 +2252,640 @@ FOREIGN KEY ("user_id")
   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1537246212716069940)[0m
   [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/songs" for ::1 at 2020-11-24 20:05:21 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongsController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 155)
+
+
+Started GET "/songs" for ::1 at 2020-11-24 20:05:32 -0500
+Processing by SongsController#index as */*
+  [1m[36mUser Load (14.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSong Load (9.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+  [1m[36mSetlist Load (5.3ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" INNER JOIN "users" ON "setlists"."user_id" = "users"."id" WHERE "users"."song_id" = $1[0m  [["song_id", 1]]
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+  [1m[36mSetlist Load (2.6ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" INNER JOIN "users" ON "setlists"."user_id" = "users"."id" WHERE "users"."song_id" = $1[0m  [["song_id", 2]]
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+  [1m[36mSetlist Load (0.5ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" INNER JOIN "users" ON "setlists"."user_id" = "users"."id" WHERE "users"."song_id" = $1[0m  [["song_id", 3]]
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+  [1m[36mSetlist Load (1.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" INNER JOIN "users" ON "setlists"."user_id" = "users"."id" WHERE "users"."song_id" = $1[0m  [["song_id", 4]]
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+Completed 200 OK in 245ms (Views: 0.2ms | ActiveRecord: 71.7ms | Allocations: 25175)
+
+
+Started POST "/setlists" for ::1 at 2020-11-24 20:08:30 -0500
+Processing by SetlistsController#create as */*
+  Parameters: {"name"=>"Test Setlist", "setlist"=>{"name"=>"Test Setlist"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlists_controller.rb:22:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/setlists_controller.rb:22:in `create'
+  [1m[36mSetlist Create (11.9ms)[0m  [1m[32mINSERT INTO "setlists" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Test Setlist"], ["created_at", "2020-11-25 01:08:30.252498"], ["updated_at", "2020-11-25 01:08:30.252498"], ["user_id", 1]]
+  ↳ app/controllers/setlists_controller.rb:22:in `create'
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/setlists_controller.rb:22:in `create'
+Completed 201 Created in 78ms (Views: 0.8ms | ActiveRecord: 44.4ms | Allocations: 14531)
+
+
+Started GET "/setlists" for ::1 at 2020-11-24 20:08:37 -0500
+Processing by SetlistsController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (0.4ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/setlists_controller.rb:9:in `index'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.4ms | Allocations: 1669)
+
+
+  
+ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :users in model Setlist):
+  
+app/controllers/setlists_controller.rb:9:in `index'
+Started GET "/setlists" for ::1 at 2020-11-24 20:09:22 -0500
+Processing by SetlistsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (0.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/setlists_controller.rb:9:in `index'
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 12.9ms | Allocations: 14927)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column songs.setlist_id does not exist
+LINE 1: SELECT "songs".* FROM "songs" WHERE "songs"."setlist_id" = $...
+                                            ^
+):
+  
+app/controllers/setlists_controller.rb:9:in `index'
+Started GET "/songs" for ::1 at 2020-11-24 20:10:47 -0500
+Processing by SongsController#index as */*
+  [1m[36mUser Load (11.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSong Load (1.8ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+Completed 200 OK in 33ms (Views: 14.0ms | ActiveRecord: 16.8ms | Allocations: 7146)
+
+
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSetlist Load (3.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Destroy (37.5ms)[0m  [1m[31mDELETE FROM "setlists" WHERE "setlists"."id" = $1[0m  [["id", 10]]
+  [1m[36mSetlist Load (0.6ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Destroy (3.3ms)[0m  [1m[31mDELETE FROM "setlists" WHERE "setlists"."id" = $1[0m  [["id", 11]]
+  [1m[36mSetlist Destroy (2.5ms)[0m  [1m[31mDELETE FROM "setlists" WHERE "setlists"."id" = $1[0m  [["id", 9]]
+  [1m[36mSetlist Load (0.5ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Load (6.8ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSong Load (3.6ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+Started GET "/songs/76327180" for ::1 at 2020-11-25 14:30:52 -0500
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:66: syntax error, unexpected tSTRING_DEND, expecting ']'
+...search]}&apikey=#{ENV['apikey'})
+...                              ^
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:68: syntax error, unexpected end, expecting tSTRING_DEND
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:80: syntax error, unexpected end, expecting tSTRING_DEND):
+  
+app/controllers/songs_controller.rb:66: syntax error, unexpected tSTRING_DEND, expecting ']'
+app/controllers/songs_controller.rb:68: syntax error, unexpected end, expecting tSTRING_DEND
+app/controllers/songs_controller.rb:80: syntax error, unexpected end, expecting tSTRING_DEND
+app/controllers/songs_controller.rb:66: syntax error, unexpected tSTRING_DEND, expecting ']'
+app/controllers/songs_controller.rb:68: syntax error, unexpected end, expecting tSTRING_DEND
+app/controllers/songs_controller.rb:80: syntax error, unexpected end, expecting tSTRING_DEND
+Started GET "/songs/76327180" for ::1 at 2020-11-25 14:31:17 -0500
+  
+SyntaxError (/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:76: syntax error, unexpected tIDENTIFIER, expecting ')'
+...llow a trusted parameter "white list" through.
+...                          ^~~~~
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:80: unterminated string meets end of file
+/Users/toni/Projects/Capstone/lyrics_api/app/controllers/songs_controller.rb:80: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/songs_controller.rb:76: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/songs_controller.rb:80: unterminated string meets end of file
+app/controllers/songs_controller.rb:80: syntax error, unexpected end-of-input, expecting end
+app/controllers/songs_controller.rb:76: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/songs_controller.rb:80: unterminated string meets end of file
+app/controllers/songs_controller.rb:80: syntax error, unexpected end-of-input, expecting end
+Started GET "/songs/76327180" for ::1 at 2020-11-25 14:31:57 -0500
+Processing by SongsController#show as */*
+  Parameters: {"id"=>"76327180"}
+  [1m[36mSong Load (2.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 76327180], ["LIMIT", 1]]
+  ↳ app/controllers/songs_controller.rb:73:in `set_song'
+Completed 404 Not Found in 151ms (ActiveRecord: 82.2ms | Allocations: 3469)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Song with 'id'=76327180):
+  
+app/controllers/songs_controller.rb:73:in `set_song'
+Started GET "/songs/65487481" for ::1 at 2020-11-25 14:32:22 -0500
+Processing by SongsController#show as */*
+  Parameters: {"id"=>"65487481"}
+  [1m[36mSong Load (46.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 65487481], ["LIMIT", 1]]
+  ↳ app/controllers/songs_controller.rb:73:in `set_song'
+Completed 404 Not Found in 50ms (ActiveRecord: 46.0ms | Allocations: 661)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Song with 'id'=65487481):
+  
+app/controllers/songs_controller.rb:73:in `set_song'
+Started GET "/songs/lyrics/65487481" for ::1 at 2020-11-25 14:33:06 -0500
+Processing by SongsController#search_track_id as */*
+  Parameters: {"search"=>"65487481"}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 2340)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+Started GET "/songs/lyrics/65487481" for ::1 at 2020-11-25 14:37:19 -0500
+Processing by SongsController#search_track_id as */*
+  Parameters: {"search"=>"65487481"}
+Completed 200 OK in 412ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 7948)
+
+
+Started GET "/songs/lyrics/65487481" for ::1 at 2020-11-26 14:41:21 -0500
+Processing by SongsController#search_track_id as */*
+  Parameters: {"search"=>"65487481"}
+Completed 200 OK in 489ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2769)
+
+
+Started GET "/songs" for ::1 at 2020-11-26 14:41:57 -0500
+Processing by SongsController#index as */*
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.0ms | Allocations: 2415)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+Started GET "/songs" for ::1 at 2020-11-26 14:46:15 -0500
+Processing by SongsController#index as */*
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms | Allocations: 1208)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+Started GET "/songs/lyrics/65487481" for ::1 at 2020-11-26 14:48:05 -0500
+Processing by SongsController#search_track_id as */*
+  Parameters: {"search"=>"65487481"}
+Completed 200 OK in 279ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 2734)
+
+
+Started GET "/songs/artist/fleetwood" for ::1 at 2020-11-26 14:48:27 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/songs/artist/fleetwood"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songs" for ::1 at 2020-11-26 14:48:56 -0500
+Processing by SongsController#index as */*
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 0.0ms | Allocations: 2153)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+Started GET "/songs/Dreams" for ::1 at 2020-11-26 14:49:49 -0500
+Processing by SongsController#show as */*
+  Parameters: {"id"=>"Dreams"}
+  [1m[36mSong Load (14.6ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/songs_controller.rb:73:in `set_song'
+Completed 404 Not Found in 262ms (ActiveRecord: 201.8ms | Allocations: 3853)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Song with 'id'=Dreams):
+  
+app/controllers/songs_controller.rb:73:in `set_song'
+Started GET "/songs/search/lyrics/dreams/fleetwood%20mac" for ::1 at 2020-11-26 14:50:33 -0500
+Processing by SongsController#search_lyrics as */*
+  Parameters: {"search"=>"dreams", "search2"=>"fleetwood mac"}
+Completed 200 OK in 240ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 2756)
+
+
+Started GET "/setlists" for ::1 at 2020-11-26 14:54:21 -0500
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SetlistsController#index as */*
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms | Allocations: 1463)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+Started GET "/setlists/1" for ::1 at 2020-11-26 14:54:44 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 2149)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+Started GET "/setlists/1" for ::1 at 2020-11-26 14:56:27 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1195)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+Started GET "/setlists%20" for ::1 at 2020-11-27 19:07:15 -0500
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/setlists%20"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/setlists/1%20" for ::1 at 2020-11-27 19:07:22 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>"1 "}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 1465)
+
+
+  
+NoMethodError (undefined method `arity' for :songs:Symbol):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:27:in `logged_in_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:36:in `authorized'
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (10.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (167.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "lyrics_api_development"[0m
+  [1m[35m (116.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "lyrics_api_test"[0m
+  [1m[35m (452.4ms)[0m  [1m[35mCREATE DATABASE "lyrics_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (234.2ms)[0m  [1m[35mCREATE DATABASE "lyrics_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (67.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1537246212716069940)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20201120015738)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (7.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201120015738"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSetlists (20201120182747)
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "setlists" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201120182747"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSongs (20201120231807)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "name" character varying, "artist" character varying, "lyrics" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201120231807"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdToSetlists (20201124162957)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "setlists" ADD "user_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201124162957"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-28 00:37:42.187701"], ["updated_at", "2020-11-28 00:37:42.187701"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1537246212716069940)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/setlists/%20" for ::1 at 2020-11-27 19:38:45 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>" "}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 55ms (Views: 0.6ms | ActiveRecord: 10.4ms | Allocations: 3192)
+
+
+Started POST "/login" for ::1 at 2020-11-27 19:38:59 -0500
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"tonim", "password"=>"[FILTERED]", "user"=>{"username"=>"tonim"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tonim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 852)
+
+
+Started POST "/login" for ::1 at 2020-11-27 19:42:24 -0500
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"tonim", "password"=>"[FILTERED]", "user"=>{"username"=>"tonim"}}
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tonim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 200 OK in 19ms (Views: 4.2ms | ActiveRecord: 4.7ms | Allocations: 679)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (3.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "tonim"], ["password_digest", "$2a$12$BkvPf0or97ddmdfGRIeHVuCfr9fVds8I7rHKu9NHGKIyHoZlP0kpC"], ["age", 39], ["created_at", "2020-11-28 00:43:04.845914"], ["updated_at", "2020-11-28 00:43:04.845914"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/login" for ::1 at 2020-11-27 19:43:11 -0500
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"tonim", "password"=>"[FILTERED]", "user"=>{"username"=>"tonim"}}
+  [1m[36mUser Load (39.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tonim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 200 OK in 327ms (Views: 1.7ms | ActiveRecord: 53.2ms | Allocations: 4784)
+
+
+Started GET "/auto_login" for ::1 at 2020-11-27 19:43:54 -0500
+Processing by UsersController#auto_login as */*
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 3.3ms | Allocations: 989)
+
+
+Started GET "/setlists/%20" for ::1 at 2020-11-27 19:44:05 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>" "}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (2.4ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/setlists_controller.rb:46:in `set_setlist'
+Completed 404 Not Found in 118ms (ActiveRecord: 14.6ms | Allocations: 4332)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Setlist with 'id'= ):
+  
+app/controllers/setlists_controller.rb:46:in `set_setlist'
+Started GET "/setlists/1%20" for ::1 at 2020-11-27 19:44:19 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>"1 "}
+  [1m[36mUser Load (8.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (8.5ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlists_controller.rb:46:in `set_setlist'
+Completed 404 Not Found in 21ms (ActiveRecord: 17.0ms | Allocations: 1433)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Setlist with 'id'=1 ):
+  
+app/controllers/setlists_controller.rb:46:in `set_setlist'
+  [1m[36mSetlist Load (1.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Load (0.8ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+Started GET "/setlists/1%20" for ::1 at 2020-11-27 19:47:14 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>"1 "}
+  [1m[36mUser Load (49.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (3.8ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlists_controller.rb:46:in `set_setlist'
+Completed 404 Not Found in 72ms (ActiveRecord: 53.6ms | Allocations: 1419)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Setlist with 'id'=1 ):
+  
+app/controllers/setlists_controller.rb:46:in `set_setlist'
+Started GET "/setlists" for ::1 at 2020-11-27 19:47:18 -0500
+Processing by SetlistsController#index as */*
+  [1m[36mUser Load (12.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (3.4ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/setlists_controller.rb:9:in `index'
+Completed 200 OK in 63ms (Views: 0.4ms | ActiveRecord: 16.0ms | Allocations: 1556)
+
+
+  [1m[36mUser Load (11.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSetlist Load (0.8ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Load (0.4ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Load (0.7ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Load (1.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (46.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "tonim2"], ["password_digest", "$2a$12$W0NyNFrSImFgGAq.8zq4we8HicD6f7UOxDVchtEEdkzhXFhI20KH6"], ["age", 39], ["created_at", "2020-11-28 00:56:50.322893"], ["updated_at", "2020-11-28 00:56:50.322893"]]
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (112.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "lyrics_api_development"[0m
+  [1m[35m (53.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "lyrics_api_test"[0m
+  [1m[35m (490.4ms)[0m  [1m[35mCREATE DATABASE "lyrics_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (104.4ms)[0m  [1m[35mCREATE DATABASE "lyrics_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (37.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1537246212716069940)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20201120015738)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201120015738"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSetlists (20201120182747)
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "setlists" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201120182747"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSongs (20201120231807)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "name" character varying, "artist" character varying, "lyrics" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201120231807"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-28 01:25:10.864820"], ["updated_at", "2020-11-28 01:25:10.864820"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(1537246212716069940)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "tonim"], ["password_digest", "$2a$12$Gk8hOOdJ.ZhxfGBMOnDvquEEI5U.yCpW2tvrxfzXRSSnCYc3EHd7m"], ["age", 39], ["created_at", "2020-11-28 01:25:20.888858"], ["updated_at", "2020-11-28 01:25:20.888858"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSetlist Load (1.3ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSetlist Create (16.5ms)[0m  [1m[32mINSERT INTO "setlists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Setlist 1"], ["created_at", "2020-11-28 01:26:55.183604"], ["updated_at", "2020-11-28 01:26:55.183604"]]
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1537246212716069940)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToSetlist (20201128012821)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.6ms)[0m  [1m[35mALTER TABLE "setlists" ADD "user_id" bigint[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_setlists_on_user_id" ON "setlists"  ("user_id")[0m
+  [1m[35m (41.2ms)[0m  [1m[35mALTER TABLE "setlists" ADD CONSTRAINT "fk_rails_f50d16f6d9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201128012821"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1537246212716069940)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSetlist Load (1.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSetlist Load (0.7ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSetlist Create (18.5ms)[0m  [1m[32mINSERT INTO "setlists" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Setlist 2"], ["created_at", "2020-11-28 01:34:08.673207"], ["updated_at", "2020-11-28 01:34:08.673207"], ["user_id", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSetlist Load (0.7ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSetlist Load (0.3ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1537246212716069940)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateJoinTableSetlistsSongs (20201128014629)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "setlists_songs" ("setlist_id" bigint NOT NULL, "song_id" bigint NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201128014629"]]
+  [1m[35m (17.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(1537246212716069940)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSetlist Load (2.9ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSong Create (16.7ms)[0m  [1m[32mINSERT INTO "songs" ("name", "artist", "lyrics", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Hello"], ["artist", "Adele"], ["lyrics", "Hello, its me I was wondering if after all these years youd like to meet To go over everything"], ["created_at", "2020-11-28 01:51:13.387379"], ["updated_at", "2020-11-28 01:51:13.387379"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSong Create (0.7ms)[0m  [1m[32mINSERT INTO "songs" ("name", "artist", "lyrics", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Gold Dust Woman"], ["artist", "Fleetwood Mac"], ["lyrics", "Rock on gold dust woman Take your silver spoon Dig your grave"], ["created_at", "2020-11-28 01:51:13.426273"], ["updated_at", "2020-11-28 01:51:13.426273"]]
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSong Create (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("name", "artist", "lyrics", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Play God"], ["artist", "Ani DiFranco"], ["lyrics", "I was done at 16 Showing up for class I was out there in the ring"], ["created_at", "2020-11-28 01:51:13.435131"], ["updated_at", "2020-11-28 01:51:13.435131"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSong Load (0.8ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  [1m[36mSong Load (0.4ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSetlist Load (0.6ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSetlist Load (0.6ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSetlist Load (9.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  [1m[36mSong Load (0.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+Started GET "/setlists" for ::1 at 2020-11-27 20:59:49 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SetlistsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (0.7ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/setlists_controller.rb:9:in `index'
+  [1m[36mSong Load (2.7ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "setlists_songs" ON "songs"."id" = "setlists_songs"."song_id" WHERE "setlists_songs"."setlist_id" = $1[0m  [["setlist_id", 2]]
+  ↳ app/controllers/setlists_controller.rb:9:in `index'
+Completed 200 OK in 308ms (Views: 0.2ms | ActiveRecord: 78.7ms | Allocations: 20037)
+
+
+Started GET "/setlists/1" for ::1 at 2020-11-27 21:00:22 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>"1"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 113)
+
+
+Started GET "/setlists/1" for ::1 at 2020-11-27 21:00:32 -0500
+Processing by SetlistsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (41.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSetlist Load (30.3ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlists_controller.rb:46:in `set_setlist'
+  [1m[36mSong Load (47.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "setlists_songs" ON "songs"."id" = "setlists_songs"."song_id" WHERE "setlists_songs"."setlist_id" = $1[0m  [["setlist_id", 1]]
+  ↳ app/controllers/setlists_controller.rb:14:in `show'
+Completed 200 OK in 137ms (Views: 0.1ms | ActiveRecord: 118.9ms | Allocations: 2660)
+
+
+Started GET "/songs" for ::1 at 2020-11-27 21:02:22 -0500
+Processing by SongsController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 151)
+
+
+Started GET "/songs" for ::1 at 2020-11-27 21:02:30 -0500
+Processing by SongsController#index as */*
+  [1m[36mUser Load (18.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:27:in `logged_in_user'
+  [1m[36mSong Load (27.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:10:in `index'
+Completed 200 OK in 55ms (Views: 6.8ms | ActiveRecord: 45.7ms | Allocations: 5683)
+
+
+  [1m[36mSong Load (2.4ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSetlist Load (1.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSong Load (0.8ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "setlists_songs" ON "songs"."id" = "setlists_songs"."song_id" WHERE "setlists_songs"."setlist_id" = $1[0m  [["setlist_id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSetlist::HABTM_Songs Create (2.9ms)[0m  [1m[32mINSERT INTO "setlists_songs" ("setlist_id", "song_id") VALUES ($1, $2)[0m  [["setlist_id", 2], ["song_id", 3]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSetlist Load (0.5ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m

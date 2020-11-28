@@ -1,8 +1,8 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :update, :destroy]
 
-  before_action :authorized, except: [:search_by_artist, :search_by_track, :search_lyrics]
-
+  before_action :authorized, except: [:search_by_artist, :search_by_track, :search_by_lyrics, :search_lyrics, :search_track_id]
+  
   # GET /songs
   def index
     @songs = Song.all
@@ -41,12 +41,17 @@ class SongsController < ApplicationController
   end
 
   def search_by_artist
-    res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=#{params[:search]}&apikey=#{ENV['apikey']}") 
+    res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_artist=#{params[:search]}&f_has_lyrics=1&apikey=#{ENV['apikey']}") 
     render json: res.body
   end
 
   def search_by_track
-    res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=#{params[:search]}&apikey=#{ENV['apikey']}") 
+    res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=#{params[:search]}&f_has_lyrics=1&apikey=#{ENV['apikey']}") 
+    render json: res.body
+  end
+
+  def search_by_lyrics
+    res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_lyrics=#{params[:search]}&f_has_lyrics=1&apikey=#{ENV['apikey']}") 
     render json: res.body
   end
 
@@ -55,6 +60,10 @@ class SongsController < ApplicationController
     render json: res.body
   end
 
+def search_track_id
+  res = Faraday.get("https://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&callback=callback&track_id=#{params[:search]}&apikey=#{ENV['apikey']}")
+  render json: res.body
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

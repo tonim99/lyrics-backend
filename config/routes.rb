@@ -10,5 +10,11 @@ Rails.application.routes.draw do
 
   get"songs/search/track/:search", to: "songs#search_by_track"
 
+  get"songs/search/lyrics/:search", to: "songs#search_by_lyrics"
+
   get"songs/search/lyrics/:search/:search2", to: "songs#search_lyrics"
+
+  # get "songs/search/:search", to: "songs#search"
+
+  get "songs/search/id/:search", to: "songs#search_track_id"
 end
